@@ -1,23 +1,41 @@
-import sys, pygame
-pygame.init()
+import pygame, sys, os
 
-size = width, height = 400, 400
-speed = [2, 2]
-black = 0, 0, 0
+# os.environ['SDL_VIDEODRIVER'] = 'windlib'
 
-screen = pygame.image.load("images/intro_ball.gif")
-ballrect = ball.get_rect()
+# os.environ["DISPLAY"]
+os.environ["SDL_VIDEODRIVER"] = "dummy"
 
-while 1:
+
+# import the pygame module
+# pygame.init()
+# pygame.display.list_modes()
+  
+# Define the background colour
+# using RGB color coding.
+background_colour = (234, 212, 252)
+  
+# Define the dimensions of
+# screen object(width,height)
+screen = pygame.display.set_mode((300, 300))
+  
+# Set the caption of the screen
+pygame.display.set_caption('Geeksforgeeks')
+  
+# Fill the background colour to the screen
+screen.fill(background_colour)
+  
+# Update the display using flip
+pygame.display.flip()
+  
+# Variable to keep our game loop running
+running = True
+  
+# game loop
+while running:
+    
+# for loop through the event queue  
     for event in pygame.event.get():
-        if event.type == pygame.QUIT: sys.exit()
-
-    ballrect = ballrect.move(speed)
-    if ballrect.left < 0 or ballrect.right > width:
-        speed[0] = -speed[0]
-    if ballrect.top < 0 or ballrect.bottom > height:
-        speed[1] = -speed[1]
-
-    screen.fill(black)
-    screen.blit(ball, ballrect)
-    pygame.display.flip()
+      
+        # Check for QUIT event      
+        if event.type == pygame.QUIT:
+            running = False
